@@ -1,0 +1,5 @@
+export const MAX_ABACUS_COLUMN_NUM = 9
+export const MAX_ABACUS_COLUMN_LOWER_NUM = 4
+export const MIN_ABACUS_COLUMN_NUM = 0
+export const MAX_ABACUS_COLUMN_UPPER_NUM = 5
+
