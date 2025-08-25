@@ -13,9 +13,9 @@ export const AbacusGamePanel = () => {
     type Op = '+' | '-';
     type Token = Op | number;
 
-    const [count, setCount] = useState("2")
-    const [amount, setAmount] = useState("2")
-    const [difficulty, setDifficulty] = useState("2")
+    const [count, setCount] = useState<string>("2")
+    const [amount, setAmount] = useState<string>("2")
+    const [difficulty, setDifficulty] = useState<string>("1")
     const [exercise, setExercise] = useState<Token[]>([])
 
 
