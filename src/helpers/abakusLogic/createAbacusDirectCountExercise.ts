@@ -17,11 +17,12 @@ import {
     subNumberToReverseAbacus
 } from "@/helpers/abakusLogic/abakusDirectCountOperations/subOperations";
 
+type Op = '+' | '-';
+type Token = Op | number;
 
-export const createAbacusDirectCountExercise = (count: number, amount: number, difficulty: number) => {
-    const abacusCount = 0;
-    const exercise = []
-    let abacus = new Abacus().abacus
+export const createAbacusDirectCountExercise = (count: number, amount: number, difficulty: number): Token[] => {
+    const exercise: Token[] = []
+    const abacus = new Abacus().abacus
     const reversedAbacus = reverseAbacus(abacus)
 
     for (let i = 0; i < amount; i++) {

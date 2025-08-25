@@ -10,10 +10,13 @@ export const AbacusGamePanel = () => {
     const countItems = [2, 3, 4, 5, 6, 7, 8, 9, 10]
     const difficultyItems = [1, 2, 3, 4]
 
+    type Op = '+' | '-';
+    type Token = Op | number;
+
     const [count, setCount] = useState("2")
     const [amount, setAmount] = useState("2")
     const [difficulty, setDifficulty] = useState("2")
-    const [exercise, setExercise] = useState([])
+    const [exercise, setExercise] = useState<Token[]>([])
 
 
     return (

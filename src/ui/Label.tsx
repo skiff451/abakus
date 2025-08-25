@@ -1,5 +1,5 @@
 type LabelProps = {
-    name:string;
+    name: string | number;
 }
 export const Label = ({name}:LabelProps)=>{
     return (
