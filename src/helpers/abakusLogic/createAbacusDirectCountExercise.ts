@@ -1,7 +1,7 @@
 import {Abacus} from "@/helpers/abakusLogic/abakus";
 
 import {
-    getMaxNumberToDifficulty,
+    getMaxNumber,
     randomNumber,
     randomOperation,
     reverseAbacus,
@@ -16,18 +16,18 @@ import {
     checkIsAllowedSubNumber,
     subNumberToReverseAbacus
 } from "@/helpers/abakusLogic/abakusDirectCountOperations/subOperations";
+import {CountType, DifficultyType, Token} from "@/types/abacusTypes";
 
-type Op = '+' | '-';
-type Token = Op | number;
 
-export const createAbacusDirectCountExercise = (count: number, amount: number, difficulty: number): Token[] => {
+
+export const createAbacusDirectCountExercise = (count: CountType, amount: number, difficulty: DifficultyType): Token[] => {
     const exercise: Token[] = []
     const abacus = new Abacus().abacus
     const reversedAbacus = reverseAbacus(abacus)
 
     for (let i = 0; i < amount; i++) {
         while (true) {
-            const number = randomNumber(count, getMaxNumberToDifficulty(difficulty))
+            const number = randomNumber(1, getMaxNumber(difficulty, count))
             const digits = splitDigits(number)
             const operation = randomOperation(operations)
 

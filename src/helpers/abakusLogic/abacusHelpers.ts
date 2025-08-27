@@ -1,15 +1,19 @@
-export const getMaxNumberToDifficulty = (difficulty: number) => {
-    switch (difficulty) {
-        case 1:
-            return 9;
-        case 2:
-            return 99;
-        case 3:
-            return 999;
-        case 4:
-            return 9999;
-        default:
-            throw new Error("invalid difficulty")
+import {CountType, DifficultyType} from "@/types/abacusTypes";
+
+
+export const getMaxNumber = (difficulty: DifficultyType, count: CountType) => {
+    const splitNumber = String(difficulty).split("")
+    if (difficulty === 1) {
+        return count
+    } else {
+        const stringDifficulty = splitNumber.map((n, i) => {
+            if (i === 0) {
+                return count
+            } else {
+                return 9
+            }
+        }).join("")
+        return Number(stringDifficulty)
     }
 }
 

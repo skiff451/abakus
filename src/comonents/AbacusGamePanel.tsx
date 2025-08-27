@@ -5,16 +5,14 @@ import {Label} from "@/ui/Label";
 import {createAbacusDirectCountExercise} from "@/helpers/abakusLogic/createAbacusDirectCountExercise";
 import {Range} from "@/ui/Range";
 import {useState} from "react";
+import {CountType, DifficultyType, Token} from "@/types/abacusTypes";
 
 export const AbacusGamePanel = () => {
     const countItems = [2, 3, 4, 5, 6, 7, 8, 9, 10]
-    const difficultyItems = [1, 2, 3, 4]
-
-    type Op = '+' | '-';
-    type Token = Op | number;
+    const difficultyItems = [1, 10, 100, 1000]
 
     const [count, setCount] = useState<string>("2")
-    const [amount, setAmount] = useState<string>("2")
+    const [amount, setAmount] = useState<string>("5")
     const [difficulty, setDifficulty] = useState<string>("1")
     const [exercise, setExercise] = useState<Token[]>([])
 
@@ -37,7 +35,10 @@ export const AbacusGamePanel = () => {
             </div>
             <div className="p-5 flex justify-center flex-grow">
                 <Button name={"Start"} type={"submit"} onClick={() => {
-                    setExercise(createAbacusDirectCountExercise(Number(count), Number(amount), Number(difficulty)))
+                    setExercise(createAbacusDirectCountExercise(
+                        Number(count) as CountType,
+                        Number(amount),
+                        Number(difficulty) as DifficultyType))
                 }}/>
             </div>
             <div className="flex gap-4 max-w-2xl flex-wrap py-10 ">
