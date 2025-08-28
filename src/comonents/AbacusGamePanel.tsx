@@ -8,7 +8,7 @@ import {useState} from "react";
 import {CountType, DifficultyType, Token} from "@/types/abacusTypes";
 
 export const AbacusGamePanel = () => {
-    const countItems = [2, 3, 4, 5, 6, 7, 8, 9, 10]
+    const countItems = [2, 3, 4, 5, 6, 7, 8, 9]
     const difficultyItems = [1, 10, 100, 1000]
 
     const [count, setCount] = useState<string>("2")

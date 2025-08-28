@@ -18,16 +18,32 @@ import {
 } from "@/helpers/abakusLogic/abakusDirectCountOperations/subOperations";
 import {CountType, DifficultyType, Token} from "@/types/abacusTypes";
 
-
+const checkMaxExerciseResult = (max: number, exercise: Token[]) => {
+    let result = 0
+    let currentOperation = ""
+    exercise.forEach(token => {
+        if (typeof token === "string") {
+            currentOperation = token
+        } else {
+            if (currentOperation === "+") {
+                result += token
+            } else {
+                result -= token
+            }
+        }
+    })
+    return result <= max
+}
 
 export const createAbacusDirectCountExercise = (count: CountType, amount: number, difficulty: DifficultyType): Token[] => {
     const exercise: Token[] = []
     const abacus = new Abacus().abacus
     const reversedAbacus = reverseAbacus(abacus)
+    const max = getMaxNumber(difficulty, count)
 
     for (let i = 0; i < amount; i++) {
         while (true) {
-            const number = randomNumber(1, getMaxNumber(difficulty, count))
+            const number = randomNumber(1, max)
             const digits = splitDigits(number)
             const operation = randomOperation(operations)
 
@@ -46,5 +62,10 @@ export const createAbacusDirectCountExercise = (count: CountType, amount: number
             }
         }
     }
-    return exercise
+
+    if (checkMaxExerciseResult(max, exercise)) {
+        return exercise
+    } else {
+        return createAbacusDirectCountExercise(count, amount, difficulty)
+    }
 }
